@@ -1,0 +1,77 @@
+{% extends 'guests.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+
+<div>
+<p class="h3">Student Council Suggestion Form</p>
+<h4 style="text-align: center; position: relative; top: 20px">Name: Carl Kaziboni</h4>
+<h4 style="text-align: center; position: relative; top: 20px;">City: Harare</h4>
+<h4 style="text-align: center; position: relative; top: 20px;">Country: Zimbabwe</h4>
+</div>
+
+<form action="/" method="post">
+
+    <table id="form-table">
+        <tr>
+        <td>
+    <div class="form-name">
+      <label for="name">Enter your forename: </label>
+      <input type="text" name="name" id="name" required>
+    </div>
+    </td>
+
+        <td>
+    <div class="form-surname">
+      <label for="name">Enter your surname: </label>
+      <input type="text" name="surname" id="surname" required>
+    </div>
+        </td>
+    </tr>
+    <tr>
+    <td>
+    <div class="form-id">
+        <label for="identification">Choose appropriate option:</label>
+
+    <select name="identification" id="identification" required>
+        <option value="" selected disabled>--Please choose an option--</option>
+        <option value="Form 1">Form 1</option>
+        <option value="Form 2">Form 2</option>
+        <option value="Form 3">Form 3</option>
+        <option value="Form 4">Form 4</option>
+        <option value="Lower 6">Lower 6</option>
+        <option value="Upper 6">Upper 6</option>
+        <option value="Staff">Staff</option>
+        <option value="Parent">Parent</option>
+        <option value="Other">Other</option>
+    </select>
+    </div>
+    </td>
+    <td>
+    <div class="form-gender">
+        <label for="gender">Choose gender</label>
+
+        <select name="gender" id="gender" required>
+            <option value="" selected disabled>--Gender--</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+        </select>
+    </div>
+    </td>
+    </tr>
+    <tr>
+    <td colspan="2" id="suggestion">
+    <div class="response">
+        <textarea name="suggestiontext" id="Suggestiontext" required placeholder="Suggestion" rows="5" cols="100" minlength="1" maxlength="500"></textarea>
+    </div>
+
+    <div class="sumbit">
+        <button class="btn btn-primary" type="submit" id="submit">Submit</button>
+    </div>
+</td>
+</tr>
+    </table>
+  </form>
+
+{% endblock %}

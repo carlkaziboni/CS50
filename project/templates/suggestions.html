@@ -1,0 +1,83 @@
+{% extends 'admin.html' %}
+
+{% block title %} Suggestions {% endblock %}
+
+{% block body %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Suggestion</th>
+        <th scope="col">blank</th>
+        <th scope="col">blank</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for suggestion in suggestionval %}
+      <tr>
+        <td>{{ suggestion[0] }}</td>
+        <td><button type="button" class="btn btn-secondary" id="{{ suggestion[1] }}approve">Approve</button></td>
+        <script>
+        document.getElementById('{{ suggestion[1] }}approve').addEventListener('click', function(){
+            if (document.getElementById('{{ suggestion[1] }}approve-form').style.visibility == 'visible')
+            {
+                document.getElementById('{{ suggestion[1] }}approve-form').style.visibility='collapse';
+            }
+            else if(document.getElementById('{{ suggestion[1] }}approve-form').style.visibility=='collapse')
+            {
+                formlist = document.querySelectorAll(".response")
+                formlist.forEach(responseform => {
+                  responseform.style.visibility='collapse'              
+                });
+                document.getElementById('{{ suggestion[1] }}approve-form').style.visibility='visible';
+            }
+            })
+            </script>
+        <td><button type="button" class="btn btn-secondary" id="{{ suggestion[1] }}unapprove">Unapprove</button></td>
+        <script>
+            document.getElementById('{{ suggestion[1] }}unapprove').addEventListener('click', function(){
+            if (document.getElementById('{{ suggestion[1] }}unapprove-form').style.visibility == 'visible')
+            {
+                document.getElementById('{{ suggestion[1] }}unapprove-form').style.visibility='collapse';
+            }
+            else if(document.getElementById('{{ suggestion[1] }}unapprove-form').style.visibility=='collapse')
+            {
+                formlist = document.querySelectorAll(".response")
+                formlist.forEach(responseform => {
+                  responseform.style.visibility='collapse'              
+                });
+                document.getElementById('{{ suggestion[1] }}unapprove-form').style.visibility='visible';
+            }
+              })
+                </script>
+      </tr>
+      <tr style="visibility: collapse;" id="{{ suggestion[1] }}approve-form" class="response">
+        <form action="/addapproved" method="POST">
+        <td>
+            <select style="visibility: hidden;" name="suggestionid">
+              <option value="{{ suggestion[1] }}" selected></option>
+            </select>
+            <label for="Date">Date of completion</label>
+            <input type="date" id="date" name="date" required>
+        </td>
+        <td>
+            <textarea placeholder="Method of Completion" name="MOC" required></textarea>
+        </td>
+        <td><button class="btn btn-secondary" id="submit">Submit</button></td>
+        </form>
+      </tr>
+      <tr style="visibility: collapse;" id="{{ suggestion[1] }}unapprove-form" class="response">
+        <form action="/addunapproved" method="POST">
+        <td>
+          <select style="visibility: hidden;" name="suggestionid">
+            <option value="{{ suggestion[1] }}" selected></option>
+          </select>
+          <textarea placeholder="Reason" required id="reason" name="reason"></textarea></td>
+        <td colspan="2"><button class="btn btn-secondary" id="submit">Submit</td>
+        </form>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

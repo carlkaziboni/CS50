@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                document.querySelector('#four').addEventListener('click', function(){
+                    document.querySelector("#four").style.backgroundColor = 'red';
+                    document.querySelector('#feedback').innerHTML = 'Incorrect';
+                });
+                document.querySelector('#five').addEventListener('click', function(){
+                    document.querySelector('#five').style.backgroundColor = 'green';
+                    document.querySelector('#feedback').innerHTML = 'Correct';
+                });
+                document.querySelector('#six').addEventListener('click', function(){
+                    document.querySelector('#six').style.backgroundColor = 'red';
+                    document.querySelector('#feedback').innerHTML = 'Incorrect';
+                });
+
+                document.querySelector('#submit').addEventListener('click', function(){
+                    let input = document.getElementById('answer');
+                    if (input.value === 'five')
+                    {
+                        input.style.backgroundColor = 'green';
+                        document.querySelector('#feedback2').innerHTML = 'Correct';
+                    }
+                    else
+                    {
+                        input.style.backgroundColor = 'red';
+                        document.querySelector('#feedback2').innerHTML = 'Incorrect';
+                    }
+                });
+        });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is 2 + 3?</h3>
+                <button type = 'button' id = 'four'>four</button>
+                <button type = 'button' id = 'five'>five</button>
+                <button type = 'button' id = 'six'>six</button>
+                <p id = 'feedback'></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>What is 2 + 3?</h3>
+                <input type = "text" id= 'answer'>
+                <button type = 'button' id = 'submit'>Submit</button>
+                <p id = 'feedback2'></p>
+            </div>
+        </div>
+    </body>
+</html>

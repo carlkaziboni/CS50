@@ -1,0 +1,34 @@
+.nav-link 
+{
+    font-size: x-large;
+}
+
+.h3
+{
+    text-align: center;
+    position: relative;
+    top: 20px;
+}
+
+#form-table
+{
+    position: relative;
+    top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td
+{
+    padding: 10px;
+}
+
+.response, .sumbit
+{
+    text-align: center;
+}
+
+#submit
+{
+    background-color: green;
+}

@@ -1,0 +1,28 @@
+p
+{
+    margin-left: 0.8em;
+    font-family: cursive;
+    font-size: 1.2em;
+}
+
+.nav-link
+{
+    font-size: 2em;
+}
+
+#navbar
+{
+    font-size: 2em;
+    color: green;
+}
+
+p[dir = 'rtl']
+{
+    visibility: hidden;
+    margin-left: 0;
+}
+
+h3, li
+{
+    color: blue;
+}

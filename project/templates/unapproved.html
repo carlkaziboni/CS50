@@ -1,0 +1,25 @@
+{% extends 'guests.html' %}
+
+{% block title %}Unapproved{% endblock %}
+
+{% block body %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Suggestion</th>
+        <th scope="col">Date</th>
+        <th scope="col">Reason</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for val in unapprovedlist %}
+      <tr>
+        <td>{{ val[0] }}</td>
+        <td>{{ val[2] }}</td>
+        <td>{{ val[1] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% endblock %}

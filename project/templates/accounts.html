@@ -1,0 +1,53 @@
+{% extends 'admin.html' %}
+
+{% block title %}Accounts{% endblock %}
+
+{% block body %}
+
+<td><button type="button" class="btn btn-secondary" id="new-account">New Account</button></td>
+
+<form action="/accounts" method="post" style="visibility: hidden" id="new-account-form">
+    <label>Name: </label>
+    <input placeholder="Name" type="text" id="name" name="name">
+    <label>Username: </label>
+    <input type="text" placeholder="Username" id="username" name="username">
+    <select name="accounttype">
+      <option selected disabled>Account Type</option>
+      <option value="normal">Normal</option>
+      <option value="admin">Admin</option>
+    </select>
+    <button type="submit" class="btn btn-secondary" name="submit">Submit</button>
+    </form>
+
+<script>document.querySelector('#new-account').addEventListener('click', function()
+{
+    document.getElementById('new-account-form').style.visibility='visible';
+})</script>
+
+<table class="table" style='position: relative; top: 40px'>
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Password</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for user in users %}
+        <td>{{ user[1] }}</td>
+        <td>{{ user[2] }}</td>
+        <td>{% if user[3] == 'UNHASHED' %} {{ user[4] }} {% endif %}</td>
+        <td>
+          <form method="Post" action="/delete">
+            <select name="deleteid" style="visibility: hidden;"><option value="{{ user[0] }}" selected></option></select>
+            <button type="submit" class="btn btn-secondary" id="remove">Remove</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

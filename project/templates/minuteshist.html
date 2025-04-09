@@ -1,0 +1,36 @@
+{% extends 'admin.html' %}
+{% block title %} Minutes History {% endblock %}
+
+{% block body %}
+<p id="minute-content" style="text-align: center;"></p>
+<button type="button" class="btn btn-secondary" id="close" style="visibility: hidden; position: relative; left: 48%;">Close</button>
+<script>
+  document.getElementById('close').addEventListener('click', function()
+  {
+    document.getElementById('minute-content').innerHTML='';
+    document.getElementById('close').style.visibility = 'hidden';
+  })
+</script>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">View</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for minute in minute %}
+      <tr>
+        <td>{{ minute[1] }}</td>
+        <td><button type="button" class="btn btn-secondary" id="{{ minute[2] }}view">View</button></td>
+        <script>document.querySelector('#\\3{{ minute[2] }} view').addEventListener('click', function()
+        {
+            document.getElementById('minute-content').innerHTML = '{{ minute[0] }}'
+            document.getElementById('close').style.visibility = 'visible';
+        })</script>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

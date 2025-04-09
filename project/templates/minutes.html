@@ -1,0 +1,16 @@
+{% extends 'admin.html' %}
+
+{% block title %} Minutes {% endblock %}
+
+{% block body %}
+
+<form method="post" action="/minutes">
+    <div id="minutes-input">
+    <textarea cols="150" rows="15" placeholder="Minutes" name="minute"></textarea>
+    </div>
+    <div id="minutes-submit">
+    <button type="submit" class="btn btn-secondary" style="background-color: green;">Submit</button>
+    </div>
+</form>
+
+{% endblock %}

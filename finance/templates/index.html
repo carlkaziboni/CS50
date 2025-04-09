@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col" style='text-align: left; width: 300px;'>Name</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for result, total in zip(results, usdtotals) %}
+      {% if symbolval[result['symbol']] > 0 %}
+      <tr>
+        <td>{{ result['symbol'] }}</td>
+        <td style='text-align: left;'>{{ result['name'] }}</td>
+        <td>{{ symbolval[result['symbol']] }}</td>
+        <td>{{ result['price'] }}</td>
+        <td>{{ total }}</td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+      <tr>
+        <td></td><td></td><td></td>
+        <th scope="row">Cash</td>
+        <td>{{ cash }}</td>
+      </tr>
+      <tr>
+        <td></td><td></td><td></td>
+        <th scope="row">Total</td>
+        <td>{{ finaltot }}</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

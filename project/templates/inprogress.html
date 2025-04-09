@@ -1,0 +1,60 @@
+{% extends 'admin.html' %}
+
+{% block title %} In progress{% endblock %} 
+
+{% block body %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Suggestion</th>
+        <th scope="col">Date of completion</th>
+        <th scope="col">Method</th>
+        <th scope="col">Delay</th>
+        <th scope ="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for suggestion in approved %}
+      <tr>
+        <td>{{ suggestion[1] }}</td>
+        <td>{{ suggestion[3] }}</td>
+        <td>{{ suggestion[2] }}</td>
+        <td>+{{ suggestion[4] }} days</td>
+        <td><button type="button" class="btn btn-secondary" id="{{ suggestion[0] }}delay">Delay</button></td>
+        <td>
+          <form action="/complete" method="post">
+            <select name="suggestionid" style="visibility: hidden;">
+              <option value="{{ suggestion[0] }}"></option>
+            </select>
+            <button type="submit" class="btn btn-secondary">Complete</button>
+          </form>
+        </td>
+        <script>document.getElementById('{{ suggestion[0] }}delay').addEventListener('click', function(){
+          if (document.getElementById('{{ suggestion[0] }}delay-form').style.visibility == 'visible')
+          {
+              document.getElementById('{{ suggestion[0] }}delay-form').style.visibility='collapse';
+          }
+          else if(document.getElementById('{{ suggestion[0] }}delay-form').style.visibility=='collapse')
+          {
+              formlist = document.querySelectorAll(".delay")
+              formlist.forEach(responseform => {
+                responseform.style.visibility='collapse'              
+              });
+              document.getElementById('{{ suggestion[0] }}delay-form').style.visibility='visible';
+          }
+          })</script>
+      </tr>
+      <tr id="{{ suggestion[0] }}delay-form" style="visibility: collapse;" class="delay">
+        <form action="/delay" method="post">
+        <td colspan="2"><input type="number" placeholder="Days" id="delay-num" name="delay-num" required></td>
+        <td colspan="2"><button type="submit" class="btn btn-secondary">Submit</button></td>
+        <td style="visibility: hidden;"><select name="id"><option selected>{{ suggestion[0] }}</option></select></td>
+        </form>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

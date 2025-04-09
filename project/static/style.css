@@ -1,0 +1,9 @@
+.nav-link
+{
+    font-size: xx-large;
+}
+
+#minutes-input, #minutes-submit, #minute-content, #reason
+{
+    text-align: center;
+}

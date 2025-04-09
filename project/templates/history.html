@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block title %}
+History
+{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Price</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Transacted</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for result in historyresults %}
+      <tr>
+        <td>{{ result['symbol'] }}</td>
+        <td>{{ usd(result['price']) }}</td>
+        <td>{{ result['shares'] }}</td>
+        <td>{{ result['time'] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

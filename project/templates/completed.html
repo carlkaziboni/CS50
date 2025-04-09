@@ -1,0 +1,26 @@
+{% extends 'guests.html' %}
+
+{% block title %} Completed {% endblock %}
+
+{% block body %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Suggestion</th>
+        <th scope="col">Date</th>
+        <th scope="col">How</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for val in completedval %}
+      <tr>
+        <td>{{ val[1] }}</td>
+        <td>{{ val[0] }}</td>
+        <td>{{ val[2] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>Welcome</title>
+        <script>
+          document.addEventListener('DOMContentLoaded', function(){
+            document.querySelector('#submit').addEventListener('click', function(){
+              document.querySelector('#response').style.visibility = 'visible';
+            });
+          });
+        </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" id="navbar" href="#">SJC</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link" aria-current="page" href="/index.html">Home</a>
+                  <a class="nav-link" href="/approved.html">Approved</a>
+                  <a class="nav-link" href="/completed.html">Completed</a>
+                  <a class="nav-link" href="/Contact.html">Contact</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+
+          <div>
+            <p> The purpose of the student council suggestion form is to provide students an easy access platform to give their input on the school and what things they think they should change</p>
+
+            <h3>Rules</h3>
+            <p>These rules are set out in order to control the responses</p>
+            <ul>
+              <li>No profane language</li>
+              <li>Relevant suggestions in the form only</li>
+              <li>Respectful comments only</li>
+              <li>No spam</li>
+            </ul>
+          </div>
+            <form action="" method="get" class="form-example">
+              <div class="form-example">
+                <label for="name">Enter your name: </label>
+                <input type="text" name="name" id="name" required>
+              </div>
+              <div class="form-example">
+                <label for="suggestion">Enter your suggestion: </label>
+                <input type="text" name="text" id="suggestion" required>
+              </div>
+              <div>
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                    <label class="form-check-label" for="firstRadio">First radio</label>
+                  </li>
+                  <li class="list-group-item">
+                    <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
+                    <label class="form-check-label" for="secondRadio">Second radio</label>
+                  </li>
+                  <li class="list-group-item">
+                    <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="thirdRadio">
+                    <label class="form-check-label" for="thirdRadio">Third radio</label>
+                  </li>
+                </ul>
+              </div>
+              <div class="form-example">
+                <button type = 'button' id="submit">Submit</button>
+                <p font-size = '0.5em' id = 'response' dir = 'rtl'>Success</p>
+              </div>
+            </form>
+    </body>
+</html>
